@@ -1,0 +1,58 @@
+# init
+file /init my-init.sh 0755 0 0
+
+# copy modules
+dir /lib 0777 0 0
+dir /lib/modules 0755 0 0
+dir /lib/modules/4.16.0 0755 0 0
+dir /lib/modules/4.16.0/kernel 0755 0 0
+dir /lib/modules/4.16.0/kernel/fs 0755 0 0
+dir /lib/modules/4.16.0/kernel/fs/btrfs 0755 0 0
+dir /lib/modules/4.16.0/kernel/fs/xfs 0755 0 0
+dir /lib/modules/4.16.0/kernel/lib 0755 0 0
+dir /lib/modules/4.16.0/kernel/lib/zstd 0755 0 0
+dir /lib/modules/4.16.0/kernel/lib/raid6 0755 0 0
+dir /lib/modules/4.16.0/kernel/crypto 0755 0 0
+dir /lib/modules/4.16.0/kernel/drivers 0755 0 0
+dir /lib/modules/4.16.0/kernel/drivers/block 0755 0 0
+dir /lib/modules/4.16.0/kernel/drivers/md 0755 0 0
+
+# shortcut
+file /lib/modules/4.16.0/modules.dep modules.dep 0755 0 0
+file /lib/modules/4.16.0/modules.dep.bin modules.dep.bin 0755 0 0
+file /lib/modules/4.16.0/modules.alias modules.alias 0755 0 0
+file /lib/modules/4.16.0/modules.alias.bin modules.alias.bin 0755 0 0
+file /lib/modules/4.16.0/modules.symbols modules.symbols 0755 0 0
+file /lib/modules/4.16.0/modules.symbols.bin modules.symbols.bin 0755 0 0
+file /lib/modules/4.16.0/modules.order modules.order 0755 0 0
+
+file /lib/modules/4.16.0/kernel/fs/btrfs/btrfs.ko /usr/data/src/linux/fs/btrfs/btrfs.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/fs/xfs/xfs.ko /usr/data/src/linux/fs/xfs/xfs.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/lib/zstd/zstd_compress.ko /usr/data/src/linux/lib/zstd/zstd_compress.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/lib/zstd/zstd_decompress.ko /usr/data/src/linux/lib/zstd/zstd_decompress.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/lib/raid6/raid6_pq.ko /usr/data/src/linux/lib/raid6/raid6_pq.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/lib/xxhash.ko /usr/data/src/linux/lib/xxhash.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/lib/libcrc32c.ko /usr/data/src/linux/lib/libcrc32c.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/crypto/xor.ko /usr/data/src/linux/crypto/xor.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/drivers/block/loop.ko /usr/data/src/linux/drivers/block/loop.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/drivers/block/loop.ko /usr/data/src/linux/drivers/block/loop.ko 0755 0 0
+file /lib/modules/4.16.0/kernel/drivers/md/dm-flakey.ko /usr/data/src/linux/drivers/md/dm-flakey.ko 0755 0 0
+
+# binary
+dir /bin 0755 0 0
+dir /sbin 0755 0 0
+
+file /bin/btrfs /usr/data/src/btrfs-progs/btrfs 0755 0 0
+file /bin/btrfs-convert /usr/data/src/btrfs-progs/btrfs-convert 0755 0 0
+file /bin/mkfs.btrfs /usr/data/src/btrfs-progs/mkfs.btrfs 0755 0 0
+
+file /sbin/filefrag /sbin/filefrag 0755 0 0
+file /sbin/dmsetup /sbin/dmsetup 0755 0 0
+file /sbin/busybox /sbin/busybox 0755 0 0
+slink /bin/sh /sbin/busybox 0755 0 0
+file /bin/bash /bin/bash 0755 0 0
+
+# other files
+file .profile .profile 0755 0 0
+file .bashrc .bashrc 0755 0 0
+file .inputrc .inputrc 0755 0 0

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+linux_path="/usr/data/src/linux"
+btrfs_progs_path="/usr/data/src/btrfs-progs"
+
+# get kernel version of linux
+# check if source is modified
+workdir=$(pwd)
+cd $linux_path
+
+ret=$(git name-rev --tags HEAD | grep -qv undefined &&
+			git diff --exit-code > /dev/null)
+if [ $? -eq 0 ]; then
+	plus=''
+else 
+	plus='+'
+fi
+version=$(sed -n 2,5p Makefile | cut -f 3 -d " " | tr '\n' '.' | sed -e "s/\.-/-/" | sed -e "s/.$/\n/" | sed -e "s/.$/\n/")$plus
+
+cd $workdir
+
+echo linux path: $linux_path
+echo kernel version: $version
+echo btrfs-progs path: $btrfs_progs_path
+
+cat input_template | \
+	sed -e "s/:version:/$version/g" | \
+	sed -e "s%:linux_path:%$linux_path%g" | \
+	sed -e "s%:btrfs_progs_path:%$btrfs_progs_path%g" > input
+$linux_path/usr/gen_init_cpio input | gzip > initramfs.img

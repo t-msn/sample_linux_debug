@@ -1,0 +1,5 @@
+#!/bin/bash
+
+linux_path="/usr/data/src/linux"
+
+$linux_path/usr/gen_init_cpio input | gzip > initramfs.img

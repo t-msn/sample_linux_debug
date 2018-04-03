@@ -1,0 +1,13 @@
+# init
+file /init my-init.sh 0755 0 0
+
+# binary
+dir /bin 0755 0 0
+dir /sbin 0755 0 0
+
+file /sbin/busybox /sbin/busybox 0755 0 0
+slink /bin/sh /sbin/busybox 0755 0 0
+
+# other files
+file .profile .profile 0755 0 0
+file .inputrc .inputrc 0755 0 0
